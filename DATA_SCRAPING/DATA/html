@@ -1,0 +1,45 @@
+=============================
+html content for data:
+=============================
+Scrape_ID : create 
+
+Serial_Number :
+
+Product_Name : [<div id="titleSection" class="a-section a-spacing-none"> <h1 id="title" class="a-size-large a-spacing-none"> <span id="productTitle" class="a-size-large product-title-word-break">        CooToly Biodegradable Trash Bags 100 Counts, 4-6 Gallon Small Garbage Bags in Office,Home,Pet       </span>       </h1> <!-- Title Differentiators for Desktop -->
+         <div id="expandTitleToggle" class="a-section a-spacing-none expand aok-hidden"></div>  </div>]
+
+Matched_Product_Name :
+
+Description  : [<ul class="a-unordered-list a-vertical a-spacing-mini">  <li class="a-spacing-mini"><span class="a-list-item"> ♻[Affordable100 bin liners] Professional factory direct sales, large quantity and high quality, 100PCS=20bags*5rolls.:(L*W): 19.7 inches * 15.7 inches（50x45cm）Fit 10-15 L can,about 4-6 gallon  </span></li>  <li class="a-spacing-mini"><span class="a-list-item"> ♻[Biodegradable Environmentally Friendly bin liners ]:(Our biodegradable bin liners are mainly made of corn starch and high-tech environmentally friendly materials (PSM). Non-toxic, harmless, and tasteless  </span></li>  <li class="a-spacing-mini"><span class="a-list-item"> ♻[10-20L bin bags：Home/Office Design ]: Used for general household garbage and food garbage. Not only suitable for indoor using (office, kitchen, living room, bedroom, bathroom, diaper treatment etc.), but also for outdoor applications (cat litter, dog dung, car waste, etc.)  </span></li>  <li class="a-spacing-mini"><span class="a-list-item"> ♻ [Biodegradable &amp; Breakpoint] This bin bag is translucent green. It is looks thin, but is actually tough. Breakpoint design for easy access. Roll by roll,Easy to store or carry around.  </span></li>  <li class="a-spacing-mini"><span class="a-list-item"> ♻[Professional Service] ''Emand'' Store not only provides 10L bin bag, but also 10L-240L bin bag, etc. And we will also provide handle bin bags or flat mouth bin bags!  </span></li>  </ul>]
+
+Price (AED) : [<span aria-hidden="true"><span class="a-price-symbol">AED</span><span class="a-price-whole">16<span class="a-price-decimal">.</span></span><span class="a-price-fraction">14</span></span>]
+
+Image_URL : [<div id="imgTagWrapperId" class="imgTagWrapper" role="button" tabindex="0" style="height: 489px;">
+                        <img alt="CooToly Biodegradable Trash Bags 100 Counts, 4-6 Gallon Small Garbage Bags in Office,Home,Pet" src="https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SX522_.jpg" data-old-hires="https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SL1500_.jpg" onload="markFeatureRenderForImageBlock(); if(this.width/this.height > 1.0){this.className += ' a-stretch-horizontal'}else{this.className += ' a-stretch-vertical'};this.onload='';setCSMReq('af');if(typeof addlongPoleTag === 'function'){ addlongPoleTag('af','desktop-image-atf-marker');};setCSMReq('cf')" data-a-image-name="landingImage" class="a-dynamic-image a-stretch-vertical" id="landingImage" data-a-dynamic-image="{&quot;https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SX425_.jpg&quot;:[425,425],&quot;https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SX569_.jpg&quot;:[569,569],&quot;https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SY355_.jpg&quot;:[355,355],&quot;https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SX466_.jpg&quot;:[466,466],&quot;https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SY450_.jpg&quot;:[450,450],&quot;https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SX679_.jpg&quot;:[679,679],&quot;https://m.media-amazon.com/images/I/61cgaZlwlGL._AC_SX522_.jpg&quot;:[522,522]}" style="max-width:679px;max-height:679px;"> </div>]
+
+Barcode
+Source_Website
+Last_Updated  
+
+
+=============================================
+ amzazon proxy :
+ 
+ import requests
+proxies = {
+  "https": "scraperapi:0b0dd5ac81eec19795a459111192e686@proxy-server.scraperapi.com:8001"
+}
+r = requests.get('https://www.amazon.ae/', proxies=proxies, verify=False)
+print(r.text)
+
+==============================================
+
+amazon scraper api :
+
+import requests
+
+payload = { 'api_key': '0b0dd5ac81eec19795a459111192e686', 'url': 'https://www.amazon.ae/' }
+r = requests.get('https://api.scraperapi.com/', params=payload)
+print(r.text)
+
+==============================================
