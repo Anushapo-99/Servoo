@@ -1,0 +1,37 @@
+Query_Description,Query,Result,Generated_At
+Total number of products,SELECT COUNT(*) AS total_products FROM products;,[{'total_products': 5238}],2025-10-20 14:38:46
+Number of CTN vs NON-CTN products,"SELECT Packaging_Type, COUNT(*) AS count
+        FROM products
+        GROUP BY Packaging_Type;","[{'Packaging_Type': None, 'count': 3}, {'Packaging_Type': 'CTN', 'count': 1232}, {'Packaging_Type': 'NON-CTN', 'count': 4003}]",2025-10-20 14:38:46
+Total units available,"SELECT 
+            SUM(
+                CASE 
+                    WHEN Packaging_Type='CTN' 
+                         AND Units_Per_Carton NOT IN ('N/A', '', '0', 'NULL')
+                    THEN CAST(Units_Per_Carton AS INTEGER)
+                    ELSE 1
+                END
+            ) AS total_units
+        FROM products;",[{'total_units': 126437}],2025-10-20 14:38:46
+Duplicate Serial_Numbers,"SELECT Serial_Number, COUNT(*) AS count
+        FROM products
+        GROUP BY Serial_Number
+        HAVING COUNT(*) > 1;","[{'Serial_Number': '5201', 'count': 2}]",2025-10-20 14:38:46
+Missing Serial_Numbers,"SELECT COUNT(*) AS missing_serials
+        FROM products
+        WHERE Serial_Number IS NULL OR TRIM(Serial_Number) = '';",[{'missing_serials': 0}],2025-10-20 14:38:46
+Supplier-wise product counts,"SELECT Supplier, COUNT(*) AS total_products
+        FROM products
+        GROUP BY Supplier
+        ORDER BY total_products DESC;","[{'Supplier': 'Amal Trading', 'total_products': 4558}, {'Supplier': 'Future', 'total_products': 466}, {'Supplier': 'Chettiot', 'total_products': 186}, {'Supplier': 'Red Frozen', 'total_products': 28}]",2025-10-20 14:38:46
+Products appearing in multiple catalogs,"SELECT Serial_Number, COUNT(DISTINCT Supplier) AS supplier_count
+        FROM products
+        GROUP BY Serial_Number
+        HAVING supplier_count > 1;","[{'Serial_Number': '5201', 'supplier_count': 2}]",2025-10-20 14:38:46
+Unique products (only in one catalog),"SELECT COUNT(*) AS unique_products
+        FROM (
+            SELECT Serial_Number
+            FROM products
+            GROUP BY Serial_Number
+            HAVING COUNT(DISTINCT Supplier) = 1
+        );",[{'unique_products': 5236}],2025-10-20 14:38:46
